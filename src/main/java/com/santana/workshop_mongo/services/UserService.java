@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.santana.workshop_mongo.UserRepository;
 import com.santana.workshop_mongo.domain.User;
 import com.santana.workshop_mongo.dto.UserDTO;
+import com.santana.workshop_mongo.repositories.UserRepository;
 import com.santana.workshop_mongo.services.exception.ObjectNotFoundException;
 
 @Service

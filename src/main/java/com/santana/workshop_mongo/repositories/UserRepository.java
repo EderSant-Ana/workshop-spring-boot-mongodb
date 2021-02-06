@@ -1,4 +1,4 @@
-package com.santana.workshop_mongo;
+package com.santana.workshop_mongo.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

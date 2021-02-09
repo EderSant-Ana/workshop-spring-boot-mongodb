@@ -1,5 +1,6 @@
 package com.santana.workshop_mongo.resources;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,18 @@ public class PostResource {
 		List<Post> list = postService.findByTitleContaining(text);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@GetMapping("/fullsearch")
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam (value="text", defaultValue="") String text,
+			@RequestParam (value="minDate", defaultValue="") CharSequence minDateChr,
+			@RequestParam (value="maxDate", defaultValue="") CharSequence maxDateChr){
+		text = URL.decodeParam(text);
+		Instant minDate = URL.convertInstant(minDateChr, Instant.parse("1970-01-01T00:00:00Z"));
+		Instant maxDate = URL.convertInstant(maxDateChr, Instant.now());
+		List<Post> list = postService.fullSearch(text, minDate, maxDate);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	
 }
